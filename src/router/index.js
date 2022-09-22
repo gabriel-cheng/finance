@@ -1,23 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Index from '../views/Index.vue';
-import Sobre from '../views/Sobre.vue';
-import Teste from '../views/Teste.vue';
+function lazyLoad(view) {
+    return import(`../views/${view}.vue`);
+}
 
 const routes = [
     {
         path: '/',
         name: 'index',
-        component: Index
+        component: lazyLoad('Index')
     },
     {
         path: '/sobre',
         name: 'sobre',
-        component: Sobre
+        component: lazyLoad('Sobre')
     },
     {
         path: '/teste',
         name: 'teste',
-        component: Teste
+        component: lazyLoad('Teste')
     }
 ]
 
